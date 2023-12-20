@@ -30,6 +30,7 @@ class answerbutton extends StatelessWidget {
       child: Text(
         answerText,
         textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 15, fontFamily: 'Roboto'),
       ),
     );
   }
