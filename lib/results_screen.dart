@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/question_summary.dart';
@@ -25,12 +26,25 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummary();
+    var totalQue = questions.length;
+    var correctans = summaryData.where((data) {
+      return data['user_answer'] == data['correct_answer'];
+    }).length;
+
     return SizedBox(
-      width: double.infinity,
+      width: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('You Got X out of Y Questions CORRECT!'),
+          Text(
+            "You Got $correctans out of $totalQue Questions CORRECT!",
+            style: const TextStyle(
+                fontSize: 20,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
           const SizedBox(
             height: 40,
           ),
